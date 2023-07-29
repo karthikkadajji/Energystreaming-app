@@ -19,13 +19,6 @@ def get_or_register_schema(schema_registry_client):
     return schema_properties
 
 
-avro_encoder = AvroEncoder(
-    SchemaRegistrySingleton.get_instance(),
-    group_name=GROUP_NAME,
-    auto_register=True
-)
-
-
 def send_data_to_eventhub():
     data = {
         "Datum": "31.12.2020",
@@ -35,6 +28,12 @@ def send_data_to_eventhub():
         "Zeitzone_bis": "UTC",
         "Spotmarktpreis_in_ct_kWh": "5,087",
     }
+    avro_encoder = AvroEncoder(
+        SchemaRegistrySingleton.get_instance(),
+        group_name=GROUP_NAME,
+        auto_register=True
+    )
+
     avro_encoded_data = avro_encoder.encode(data, message_type=EventData)
 
     producer = EventHubProducerClient(EVENTHUB_NAME, credential=DefaultAzureCredential())
