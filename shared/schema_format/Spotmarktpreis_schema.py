@@ -1,5 +1,5 @@
 # Define the Avro schema in a separate module
-SCHEMA_JSON = """
+SCHEMA_JSON = 
 {"namespace": "example.avro",
  "type": "record",
  "name": "User",
@@ -8,4 +8,4 @@ SCHEMA_JSON = """
      {"name": "favorite_number",  "type": ["int", "null"]},
      {"name": "favorite_color", "type": ["string", "null"]}
  ]
-}"""
+}
