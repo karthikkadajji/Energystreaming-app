@@ -4,16 +4,14 @@ from azure.identity import DefaultAzureCredential
 from azure.eventhub import EventHubProducerClient, EventData
 from azure.schemaregistry import SchemaRegistryClient
 from azure.schemaregistry.encoder.avroencoder import AvroEncoder
+from shared.schema_utils.schema_registry_singleton import SchemaRegistrySingleton
 
 EVENTHUB_NAME = "energy-application-eh-ns"
 SCHEMAREGISTRY_FULLY_QUALIFIED_NAMESPACE = "energy-application-eh-ns.servicebus.windows.net"
 GROUP_NAME = "datacapture"
 
 avro_encoder = AvroEncoder(
-    client=SchemaRegistryClient(
-        fully_qualified_namespace=SCHEMAREGISTRY_FULLY_QUALIFIED_NAMESPACE,
-        credential=DefaultAzureCredential()
-    ),
+    SchemaRegistrySingleton.get_instance(),
     group_name=GROUP_NAME,
     auto_register=True
 )
