@@ -2,7 +2,7 @@
 SCHEMA_JSON = {
     "type": "record",
     "name": "SpotMarketPreisEventData",
-    "namespace": "com.example",
+    "namespace": "com.energy",
     "fields": [
         {"name": "Datum", "type": "string"},
         {"name": "von", "type": "string"},
