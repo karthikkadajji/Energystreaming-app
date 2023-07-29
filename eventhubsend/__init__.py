@@ -23,7 +23,7 @@ def send_data_to_eventhub(connection_string, eventhub_name, client, schema_id, d
             producer.send(event_data)
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-
+    #create singleton client connection
     client = SchemaRegistrySingleton.get_instance()
     schema_properties = get_or_register_schema(client)
     send_data_to_eventhub()
