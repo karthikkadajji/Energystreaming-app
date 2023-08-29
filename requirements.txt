@@ -1,0 +1,7 @@
+azure-functions
+requests==2.31.0
+azure-identity==1.13.0
+azure-keyvault==4.2.0
+azure-schemaregistry==1.2.0
+azure-eventhub==5.11.3
+azure-schemaregistry-avroencoder==1.0.0
